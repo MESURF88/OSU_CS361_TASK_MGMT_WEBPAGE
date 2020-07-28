@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>Register</title>
+{% endblock %}
+
+
+{% block style %}
+    <!-- styling for registration page -->
+    <link rel="stylesheet" href="{% static 'CSS/register.css' %}">
+
+    <!-- Google Fonts: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Font awesome icons for user and password fields -->
+    <script src="https://kit.fontawesome.com/88cc25f307.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+<!-- Main content of template goes here -->
+{% block content %}
+        <div class="form-container">
+            <div class="form-title-container">
+                <h1 class="form-logo">SuperTasks <i class="fas fa-tasks"></i></h1>
+                <hr class="form-logo">
+                <h3>Register</h3>
+            </div>
+            <form id="login-form" method="post" action=""> {% csrf_token %}
+                <span class="form-input-container">
+                    <i class="form-field-icon far fa-user-circle fa-lg"></i>
+                    <!-- <input class="form-input-field" type="text" name="username" placeholder="Username" required> -->
+                    {{form.first_name|add_class:"form-input-field"|attr:"placeholder:First Name"}}
+                </span>
+                <span class="form-input-container">
+                    <i class="form-field-icon far fa-user-circle fa-lg"></i>
+                    <!-- <input class="form-input-field" type="text" name="username" placeholder="Username" required> -->
+                    {{form.last_name|add_class:"form-input-field"|attr:"placeholder:Last Name"}}
+                </span>
+                <span class="form-input-container">
+                    <i class="form-field-icon fas fa-user-tag"></i>
+                    <!-- <input class="form-input-field" type="text" name="username" placeholder="Username" required> -->
+                    {{form.username|add_class:"form-input-field"|attr:"placeholder:Username"}}
+                </span>
+                <span class="form-input-container">
+                    <i class="form-field-icon fas fa-envelope fa-lg"></i>
+                    {{form.email|add_class:"form-input-field"|attr:"placeholder:Email"}}
+                </span>
+                <span class="form-input-container">
+                    <i class="form-field-icon fas fa-lock fa-lg"></i>
+                    {{form.password|add_class:"form-input-field"|attr:"placeholder:Password"}}
+                </span>
+                <span class="form-button-container">
+                    <input class="form-button submit" type="submit" value="Register">
+                </span>
+            </form>
+    
+            {{ form.errors }}
+            <hr>
+            <div class="login-link-container">
+                <h3>Already have an account?</h3>
+                <span class="login-button-container">
+                    <a class="login-button" href="{% url 'login' %}">Login</a>
+                </span>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

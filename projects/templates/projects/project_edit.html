@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>Edit Project</title>
+{% endblock %}
+
+{% block style %}
+    <!-- styling for edit page -->
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/edit_project.css' %}">
+
+    <!-- Google Fonts: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Font awesome icons for user and password fields -->
+    <script src="https://kit.fontawesome.com/88cc25f307.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+<!-- Main content of template goes here -->
+{% block content %}
+
+
+        
+        {% include 'projects/project_display.html' %}
+
+        <div class="container features-container">
+            <div class="card-header">
+                <h5 class="card-title">Features</h5>
+                <a href="/projects/{{ project_data.id }}/new_feature" class="btn btn-primary btn-large">+ New
+                    Feature</a>
+            </div>
+
+            {% for feature in sorted_features %}
+                {% include 'projects/feature_display.html' %}
+            {% endfor %}
+            
+        </div>
+
+    
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+<title>Projects</title>
+{% endblock %}
+
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/projects.css' %}">
+{% endblock %}
+
+
+<!-- Main content of template goes here -->
+{% block content %}
+<div>
+    <div class="form-title-container">
+        <h1>Projects <span class="fas fa-tasks"></span></h1>
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            {% for project in project_data %}
+            <div class="card card-project">
+                <div class="card-header">
+                    <h5 class="card-title">{{ project.name }}</h5>
+                    <span class="badge badge-info">{{ project.get_status_display }}</span>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ project.description }}</p>
+                    <p class="text-muted"><strong>Due: </strong>{{ project.due_date }}
+                        {% if project.is_overdue %}
+                        <span class="badge badge-danger ml-2">Overdue</span>
+                        {% endif %}
+                    </p>
+                    <p class="text-muted"><strong>Team: </strong>{{project.project_team}}</p>
+
+                </div>
+                <div class="card-footer">
+                    <a href="/projects/{{ project.id }}" class="btn btn-link float-right">Manage Project &#8594;</a>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="card card-project">
+                <div class="card-body d-flex justify-content-center align-items-center">
+                    <a href="/projects/new" class="btn btn-primary btn-large">+ New Project</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+
+
+{% block javascript %}
+<!-- Any javascript needed for this template would go here -->
+<script src="{% static 'javascript/test.js' %}"></script>
+{% endblock %}

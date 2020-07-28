@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    <title>Account Home</title>
+{% endblock %}
+
+
+{% block style %}
+    <!-- styling for registration page -->
+    <link rel="stylesheet" href="{% static 'CSS/account_home.css' %}">
+
+    <!-- Google Fonts: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+    <!-- Font awesome icons for user and password fields -->
+    <script src="https://kit.fontawesome.com/88cc25f307.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+<!-- Main content of template goes here -->
+{% block content %}
+
+    {% include 'accounts/account_container.html' %}
+    {% include 'accounts/teams_tasks_container.html' %}
+    {% include 'accounts/project_preview_container.html' %}
+
+{% endblock %}
